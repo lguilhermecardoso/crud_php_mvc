@@ -1,0 +1,20 @@
+<?php
+namespace core;
+
+use src\Config;
+
+class Request {
+
+    public static function getUrl() {
+        $url = filter_input(INPUT_GET, 'request');
+        if ($url !== null) {
+            str_replace(' ', '', ucwords(str_replace('_', ' ', $url)));
+        }
+        return '/'.$url;
+    }
+
+    public static function getMethod() {
+        return strtolower($_SERVER['REQUEST_METHOD']);
+    }
+
+}
